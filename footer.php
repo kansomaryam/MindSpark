@@ -20,21 +20,21 @@
 			<section class="col-lg-4 col-md-6 col-sm-12">
 				<ul class="d-flex">
 					<li class="list-unstyled">
-						<a href="https://www.facebook.com/codeytek" title="facebook" target="_blank">
+						<a href="https://www.facebook.com/" title="facebook" target="_blank">
 							<svg width="48">
 								<use href="#icon-facebook"></use>
 							</svg>
 						</a>
 					</li>
 					<li class="list-unstyled">
-						<a href="https://www.linkedin.com/" title="linkedin" target="_blank">
+						<a href="https://www.linkedin.com/maryamkanso" title="linkedin" target="_blank">
 							<svg width="48">
 								<use href="#icon-linkedin"></use>
 							</svg>
 						</a>
 					</li>
 					<li class="list-unstyled">
-						<a href="https://twitter.com/codeytek" title="twitter" target="_blank">
+						<a href="https://twitter.com/" title="twitter" target="_blank">
 							<svg width="48">
 								<use href="#icon-twitter"></use>
 							</svg>
@@ -53,4 +53,5 @@ wp_footer();
 ?>
 </body>
 </html>
+
 

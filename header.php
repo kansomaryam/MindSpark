@@ -27,4 +27,3 @@ if ( function_exists( 'wp_body_open' ) ) {
 		<?php get_template_part( 'template-parts/header/nav' ); ?>
 	</header>
 	<div id="content" class="site-content">
-
