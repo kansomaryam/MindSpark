@@ -63,16 +63,26 @@ function aquila_get_theme_instance() {
 
 aquila_get_theme_instance();
 
-
-
-
-function aquila_enqueue_block_editor_assets() {
-    wp_enqueue_script(
-        'aquila-financial-block',
-        get_template_directory_uri() . '/template-parts/blocks/financial-block/financial-block.js',
-        array('wp-blocks', 'wp-element', 'wp-editor'),
-        filemtime(get_template_directory() . '/template-parts/blocks/financial-block/financial-block.js'),
-        true
-    );
+if( function_exists('acf_register_block_type') ) {
+    acf_register_block_type(array(
+        'name'              => 'financial-summary',
+        'title'             => __('Financial Summary'),
+        'description'       => __('A custom block for displaying financial services.'),
+        'render_template'   => 'template-parts/blocks/financial-summary-block.php',
+        'category'          => 'layout',
+        'icon'              => 'money',
+        'keywords'          => array('financial', 'summary'),
+        'supports' => array(
+            'align' => true,
+        ),
+    ));
 }
-add_action('enqueue_block_editor_assets', 'aquila_enqueue_block_editor_assets');
+
+
+
+
+
+
+
+
+
