@@ -24,7 +24,7 @@ function autoloader( $resource = '' ) {
 		return;
 	}
 
-	// Remove our root namespace.
+
 	$resource = str_replace( $namespace_root, '', $resource );
 
 	$path = explode(
@@ -52,11 +52,7 @@ function autoloader( $resource = '' ) {
 				break;
 
 			case 'widgets':
-			case 'blocks': // phpcs:ignore PSR2.ControlStructures.SwitchDeclaration.TerminatingComment
-				/**
-				 * If there is class name provided for specific directory then load that.
-				 * otherwise find in inc/ directory.
-				 */
+			case 'blocks': 
 				if ( ! empty( $path[2] ) ) {
 					$directory = sprintf( 'classes/%s', $path[1] );
 					$file_name = sprintf( 'class-%s', trim( strtolower( $path[2] ) ) );
@@ -78,8 +74,7 @@ function autoloader( $resource = '' ) {
 	$is_valid_file = validate_file( $resource_path );
 
 	if ( ! empty( $resource_path ) && file_exists( $resource_path ) && ( 0 === $is_valid_file || 2 === $is_valid_file ) ) {
-		// We already making sure that file is exists and valid.
-		require_once( $resource_path ); // phpcs:ignore
+		require_once( $resource_path ); 
 	}
 
 }

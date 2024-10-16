@@ -14,15 +14,13 @@ class Register_Taxonomies {
 
 	protected function __construct() {
 
-		// load class.
+		
 		$this->setup_hooks();
 	}
 
 	protected function setup_hooks() {
 
-		/**
-		 * Actions.
-		 */
+		
 		add_action( 'init', [ $this, 'create_genre_taxonomy' ] );
 		add_action( 'init', [ $this, 'create_year_taxonomy' ] );
 
@@ -63,7 +61,7 @@ class Register_Taxonomies {
 
 	}
 
-	// Register Taxonomy Year
+
 	public function create_year_taxonomy() {
 
 		$labels = [

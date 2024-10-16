@@ -12,7 +12,6 @@ get_header();
 
 	<div id="primary">
 		<main id="main" class="site-main mt-5" role="main">
-			<div class="home-page-wrap">
 				<?php
 				if ( have_posts() ) :
 					while ( have_posts() ) : the_post();
@@ -30,7 +29,7 @@ get_header();
 
 				endif;
 				
-				get_template_part( 'template-parts/components/posts-carousel' );
+				/*get_template_part( 'template-parts/components/posts-carousel' );*/
 				?>
 			</div>
 		</main>
@@ -38,4 +37,5 @@ get_header();
 
 <?php
 get_footer();
+
 

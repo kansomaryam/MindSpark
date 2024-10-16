@@ -35,8 +35,8 @@ class Menus {
 	}
 
 	/**
-	 * Get the menu id by menu location.
-	 *
+	 * 
+	 * 
 	 * @param string $location
 	 *
 	 * @return integer
@@ -54,8 +54,7 @@ class Menus {
 	}
 
 	/**
-	 * Get all child menus that has given parent menu id.
-	 *
+	
 	 * @param array   $menu_array Menu array.
 	 * @param integer $parent_id Parent menu id.
 	 *

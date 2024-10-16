@@ -12,7 +12,10 @@ global $wp_query;
 $the_date           = '';
 $the_date_permalink = get_home_url();
 
-// Is Year Archive '/{year}/'
+if (!defined('AQUILA_ARCHIVE_POST_PER_PAGE')) {
+    define('AQUILA_ARCHIVE_POST_PER_PAGE', 10); // Set the desired number of posts per page
+}
+
 if ( is_year() ) {
 	$the_date           = get_the_date( 'Y' );
 	$the_date_permalink = sprintf(
@@ -22,7 +25,7 @@ if ( is_year() ) {
 	);
 }
 
-// Is Monthly Archive '/{year}/{month}/'
+
 if ( is_month() ) {
 	$the_date           = get_the_date( 'F, Y' );
 	$the_date_permalink = sprintf(
@@ -69,7 +72,7 @@ $last_page_url   = sprintf(
 						);
 					}
 					?>
-				</header><!-- .page-header -->
+				</header>
 				<div class="site-content">
 					<div class="row">
 						<?php

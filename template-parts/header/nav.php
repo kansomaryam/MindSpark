@@ -10,18 +10,13 @@ $header_menu_id = $menu_class->get_menu_id( 'aquila-header-menu' );
 $header_menus   = wp_get_nav_menu_items( $header_menu_id );
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-4">
+<nav class="navbar navbar-expand-lg py-4">
 	<div class="container">
 		<?php
 		if ( function_exists( 'the_custom_logo' ) ) {
 			the_custom_logo();
-		}
-		?>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
+			
+		}?>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<?php
 			if ( ! empty( $header_menus ) && is_array( $header_menus ) ) {

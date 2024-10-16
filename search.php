@@ -1,58 +1,45 @@
 <?php
 /**
- * Search result page.
+ * The template for displaying search results pages
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ *
+ * @package Aquila
  */
 
 get_header();
-global $wp_query;
-
-//echo '<pre/>';
-//print_r($wp_query);
-//wp_die();
 ?>
-	<div id="primary">
-		<main id="main" class="site-main mt-5" role="main">
-			<div class="container">
-				<header class="mb-5">
-					<h1 class="page-title"> <?php echo $wp_query->found_posts; ?>
-						<?php _e( 'Search Results Found For', 'locale' ); ?>: "<?php the_search_query(); ?>"
-					</h1>
-				</header>
 
-				<?php if ( have_posts() ) { ?>
+	<main id="primary" class="site-main">
 
-					<div>
+		<?php if ( have_posts() ) : ?>
 
-						<?php while ( have_posts() ) {
-							the_post(); ?>
-							<div class="card mb-5 pb-3">
-								<div class="card-body">
-									<h3 class="card-title">
-										<a href="<?php echo esc_url(get_the_permalink()); ?>">
-											<?php the_title(); ?>
-										</a>
-									</h3>
-									<div class="search-card-container">
-										<?php the_post_custom_thumbnail( get_the_ID(), 'medium', [ 'class' => 'search-card-thumbnail' ] ); ?>
-										<div class="search-card-content">
-											<?php aquila_the_excerpt(); ?>
-											<?php echo aquila_excerpt_more(); ?>
-										</div>
-									</div>
-								</div>
-							</div>
+			<header class="page-header">
+				<h1 class="page-title">
+					<?php
+					
+					printf( esc_html__( 'Search Results for: %s', '_s' ), '<span>' . get_search_query() . '</span>' );
+					?>
+				</h1>
+			</header>
 
-						<?php } ?>
+			<?php
+		
+			while ( have_posts() ) :
+				the_post();
+				get_template_part( 'template-parts/content', 'search' );
 
-					</div>
+			endwhile;
 
-					<?php aquila_pagination(); ?>
+			the_posts_navigation();
 
-				<?php } else {
-					get_search_form();
-				}?>
+		else :
 
-			</div>
-		</main>
-	</div>
-<?php get_footer(); ?>
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif;
+		?>
+	</main>
+<?php
+get_sidebar();
+get_footer();
