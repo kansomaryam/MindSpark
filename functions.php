@@ -236,4 +236,38 @@ function register_hero_block() {
 }
 add_action('acf/init', 'register_hero_block');
 
+/*FOOTER*/
+function aquila_theme_widgets_init() {
+    register_sidebar( array(
+        'name'          => __( 'Footer 1', 'aquila' ),
+        'id'            => 'footer-1',
+        'description'   => __( 'Add widgets here to appear in your footer.', 'aquila' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Footer 2', 'aquila' ),
+        'id'            => 'footer-2',
+        'description'   => __( 'Add social media widgets here.', 'aquila' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'aquila_theme_widgets_init' );
+
+
+
+function aquila_enqueue_footer_styles() {
+    // Register the footer CSS file
+    wp_enqueue_style( 'aquila-footer-css', get_template_directory_uri() . '/assets/build/css/footer.css', array(), '1.0.0', 'all' );
+}
+add_action( 'wp_enqueue_scripts', 'aquila_enqueue_footer_styles' );
+
+
+
 

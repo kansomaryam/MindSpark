@@ -1,29 +1,17 @@
-<?php
-/**
- * Footer template
- *
- * @package Aquila
- */
-?>
+<footer class="site-footer">
+    <div class="footer-widgets">
+        <?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
+            <div class="footer-2-widget-area">
+                <?php dynamic_sidebar( 'footer-2' ); ?>
+            </div>
+        <?php endif; ?>
+    </div>
 
-
-
-<footer id="site-footer" class="bg-light p-4">
-    <div class="container color-gray">
-        <div class="row">
-            <?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
-                <div class="footer-widgets col-md-12"> <!-- Added column class -->
-                    <?php dynamic_sidebar( 'footer-1' ); ?>
-                </div>
-            <?php endif; ?>
-        </div>
+    <div class="site-info">
+        <p>&copy; <?php echo date( 'Y' ); ?> Serving Finance. All rights reserved.</p>
     </div>
 </footer>
 
 <?php wp_footer(); ?>
 </body>
 </html>
-
-
-
-

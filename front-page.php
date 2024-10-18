@@ -11,7 +11,7 @@ get_header();
 ?>
 
 	<div id="primary">
-		<main id="main" class="site-main mt-5" role="main">
+		<main id="main" class="site-main" role="main">
 				<?php
 				if ( have_posts() ) :
 					while ( have_posts() ) : the_post();
@@ -37,5 +37,4 @@ get_header();
 
 <?php
 get_footer();
-
 

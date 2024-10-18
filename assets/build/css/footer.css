@@ -1,0 +1,35 @@
+.site-footer {
+    background-color: #f8f8f8;
+    padding: 20px 0;
+}
+
+.footer-widgets .widget-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.footer-widgets .footer-widget {
+    margin-bottom: 20px;
+}
+
+.site-info {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+}
+
+.site-info p {
+    margin: 0;
+}
+
+.footer-2-widget-area .wp-block-social-links {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.footer-2-widget-area .wp-block-social-links li {
+    list-style: none;
+    margin-right: 10px;
+}
