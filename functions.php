@@ -213,3 +213,27 @@ if (function_exists('acf_register_block_type')) {
     ));
 }
 
+/*hero block*/
+function register_hero_block() {
+    // Check if function exists and hook into setup.
+    if (function_exists('acf_register_block_type')) {
+        acf_register_block_type(array(
+            'name'              => 'hero-block',
+            'title'             => __('Hero Block'),
+            'description'       => __('A custom hero block with header, content, and background image.'),
+            'render_template'   => 'template-parts/blocks/hero-block.php', // Path to template
+            'category'          => 'formatting',
+            'icon'              => 'cover-image', // Choose an icon from Dashicons
+            'keywords'          => array('hero', 'banner', 'image'),
+            'enqueue_style'     => get_template_directory_uri() . '/assets/build/css/blocks.css', // Adjust path to your CSS file
+            'supports'          => array(
+                'align' => true,  // Set to true if you want alignment options
+                'mode'  => true,  // Set to true if you want edit mode options
+                'jsx'   => true,
+            ),
+        ));
+    }
+}
+add_action('acf/init', 'register_hero_block');
+
+

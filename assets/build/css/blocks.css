@@ -397,8 +397,7 @@
     /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Subtle shadow */
-    margin: -20px;
-    height: 560px;
+    height: 600px;
 }
 
 .media-image {
@@ -437,7 +436,7 @@
 }
 
 .media-button {
-    background-color: #ff7f50;
+    background-color: rgba(2, 139, 255, 1);
     /* Coral color */
     color: white;
     /* White text */
@@ -452,6 +451,75 @@
 }
 
 .media-button:hover {
-    background-color: #ff6347;
+    background-color: rgba(2, 139, 255, 1);
     /* Darker coral on hover */
+}
+
+
+/*hero block*/
+
+.hero-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-sub-header {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.hero-header {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #ff7e29;
+    /* Customize as needed */
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.hero-podcast-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.hero-podcast-links img {
+    width: 40px;
+    height: auto;
+}
+
+.hero-image {
+    flex: 1;
+    max-width: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
 }
