@@ -1,0 +1,144 @@
+/* search-results.css */
+
+
+/* General Page Layout */
+
+.page-header {
+    text-align: center;
+    margin: 60px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+
+/* Search Results Wrapper */
+
+.search-results-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+    .search-results-wrapper {
+        grid-template-columns: 1fr 1fr;
+        /* Two columns for tablets and larger screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .search-results-wrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+        /* Three columns for desktops */
+    }
+}
+
+
+/* Individual Search Result Styling */
+
+article {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    /* Slight lift effect on hover */
+}
+
+.entry-title a {
+    color: #0073aa;
+    font-size: 1.8rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.entry-title a:hover {
+    color: #005177;
+}
+
+.entry-excerpt {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+
+/* No Results Found Section */
+
+.no-results {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+}
+
+.no-results h2 {
+    font-size: 2rem;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.no-results p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+
+/* Pagination Styling */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.pagination .page-numbers {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: #0073aa;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.pagination .page-numbers:hover {
+    background-color: #005177;
+}
+
+.pagination .current {
+    background-color: #005177;
+    font-weight: bold;
+}
+
+
+/* Responsive Tweaks */
+
+@media (max-width: 767px) {
+    .page-title {
+        font-size: 2rem;
+    }
+    .entry-title a {
+        font-size: 1.5rem;
+    }
+    .search-results-wrapper {
+        padding: 0 10px;
+    }
+}

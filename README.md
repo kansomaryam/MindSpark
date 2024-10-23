@@ -1,7 +1,7 @@
 Aquila WordPress Theme </br>
-Aquila is a modern, responsive WordPress theme built specifically for financial services, designed to create a professional, engaging online </br>presence. With its sleek design, customizable sections, and performance-optimized code, Aquila offers financial advisors, consultancies, and </br> firms the perfect foundation for a user-friendly, impactful website.
+Aquila is a modern, responsive WordPress theme built specifically for financial services, designed to create a professional, engaging online presence. With its sleek design, customizable sections, and performance-optimized code, Aquila offers financial advisors, consultancies, and firms the perfect foundation for a user-friendly, impactful website.
 
-Features:
+Features: </br>
 Responsive Layouts: Fully mobile-optimized, ensuring your site looks great on all devices. </br>
 Customizable Sections: Easily adjust headers, content blocks, and layouts with built-in flexibility for your financial needs. </br>
 Performance-Optimized: Fast-loading and SEO-friendly to enhance user experience and search engine visibility. </br>
@@ -20,3 +20,4 @@ Activate the theme and configure your settings in the WordPress Customizer. </br
 
 Customization: </br>
 Use the WordPress Customizer to change colors, fonts, and layouts, and easily manage custom sections like banners, call-to-action areas, and financial summary blocks.
+

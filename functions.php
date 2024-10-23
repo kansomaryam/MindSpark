@@ -147,9 +147,28 @@ function aquila_widgets_init() {
         'before_title'  => '<h2 class="footer-title">',
         'after_title'   => '</h2>',
     ) );
+
+register_sidebar( array(
+    'name'          => __( 'Footer 1', 'aquila' ),
+    'id'            => 'footer-1',
+    'description'   => __( 'Add widgets here to appear in your footer.', 'aquila' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title">',
+    'after_title'   => '</h2>',
+) );
+    // Register Footer 2 Widget Area
+    register_sidebar( array(
+        'name'          => __( 'Footer 2', 'aquila' ),
+        'id'            => 'footer-2', // Ensure this ID matches
+        'description'   => __( 'Widgets in this area will be shown in the footer.', 'aquila' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
 }
 add_action( 'widgets_init', 'aquila_widgets_init' );
-
 
 /*header*/
 function enqueue_header_styles() {
@@ -237,29 +256,9 @@ function register_hero_block() {
 }
 add_action('acf/init', 'register_hero_block');
 
-/*FOOTER*/
-function aquila_theme_widgets_init() {
-    register_sidebar( array(
-        'name'          => __( 'Footer 1', 'aquila' ),
-        'id'            => 'footer-1',
-        'description'   => __( 'Add widgets here to appear in your footer.', 'aquila' ),
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
-        // Register Footer 2 Widget Area
-        register_sidebar( array(
-            'name'          => __( 'Footer 2', 'aquila' ),
-            'id'            => 'footer-2', // Ensure this ID matches
-            'description'   => __( 'Widgets in this area will be shown in the footer.', 'aquila' ),
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</div>',
-            'before_title'  => '<h2 class="widget-title">',
-            'after_title'   => '</h2>',
-        ) );
-    }
-    add_action( 'widgets_init', 'aquila_widgets_init' );
+
+
+
 
 
 
@@ -269,6 +268,17 @@ function aquila_enqueue_footer_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'aquila_enqueue_footer_styles' );
 
+/*search*/
 
+function theme_enqueue_styles() {
+    // Enqueue Header CSS
+    wp_enqueue_style( 'header-styles', get_template_directory_uri() . '/assets/build/css/header.css' );
+
+    // Enqueue Search CSS for search pages only
+    if ( is_search() ) {
+        wp_enqueue_style( 'search-styles', get_template_directory_uri() . '/assets/build/css/search-results.css' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 
