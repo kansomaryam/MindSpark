@@ -12,11 +12,18 @@ $header_menus   = wp_get_nav_menu_items( $header_menu_id );
 
 <nav class="navbar navbar-expand-lg py-4">
 	<div class="container">
+		
 		<?php
-		if ( function_exists( 'the_custom_logo' ) ) {
-			the_custom_logo();
-			
-		}?>
+		$custom_logo_id = get_theme_mod('custom_logo');
+		$logo = wp_get_attachment_image_src($custom_logo_id , 'full');
+		
+		if (has_custom_logo()) {
+			echo '<img src="'. esc_url($logo[0]) .'" class="custom-logo" style="max-width: 150px; height: auto;" alt="Logo">';
+		} else {
+			echo '<h1>'. get_bloginfo('name') .'</h1>';
+		}
+		?>
+	
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<?php
 			if ( ! empty( $header_menus ) && is_array( $header_menus ) ) {

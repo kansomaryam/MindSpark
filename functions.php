@@ -162,12 +162,13 @@ add_action('wp_enqueue_scripts', 'enqueue_header_styles');
 
 /*header logo*/
 function aquila_theme_setup() {
-    add_theme_support( 'custom-logo', [
-        'height'      => 100,
-        'width'       => 300,
+    add_theme_support('custom-logo', array(
+        'height'      => 100, // Change height as needed
+        'width'       => 100, // Change width as needed
         'flex-height' => true,
         'flex-width'  => true,
-    ] );
+    ));
+    
 }
 add_action( 'after_setup_theme', 'aquila_theme_setup' );
 
@@ -247,18 +248,18 @@ function aquila_theme_widgets_init() {
         'before_title'  => '<h2 class="widget-title">',
         'after_title'   => '</h2>',
     ) );
-
-    register_sidebar( array(
-        'name'          => __( 'Footer 2', 'aquila' ),
-        'id'            => 'footer-2',
-        'description'   => __( 'Add social media widgets here.', 'aquila' ),
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
-}
-add_action( 'widgets_init', 'aquila_theme_widgets_init' );
+        // Register Footer 2 Widget Area
+        register_sidebar( array(
+            'name'          => __( 'Footer 2', 'aquila' ),
+            'id'            => 'footer-2', // Ensure this ID matches
+            'description'   => __( 'Widgets in this area will be shown in the footer.', 'aquila' ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        ) );
+    }
+    add_action( 'widgets_init', 'aquila_widgets_init' );
 
 
 

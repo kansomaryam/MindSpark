@@ -7,29 +7,21 @@
     border-bottom: 1px solid #eaeaea;
 }
 
-
-/* Style the custom logo in nav */
-
 .custom-logo {
-    max-height: 50px;
-    filter: brightness(0) invert(1);
-    /* Adjust height as needed */
-    height: auto;
-    width: auto;
+    width: 100px;
+    height: 20px;
+    background-color: #ff6a00;
+    padding: 10px;
+    margin-right: 10px;
 }
 
 
 /* Navbar styling */
 
 .navbar {
-    background-color: rgba(2, 139, 255, 1);
+    background-color: #ff6a00;
     /* Light background for the navbar */
     padding: 1rem 0;
-}
-
-.navbar .navbar-brand img {
-    max-height: 50px;
-    /* Limit logo size */
 }
 
 
@@ -43,7 +35,7 @@
 }
 
 .navbar .nav-link:hover {
-    color: #ff6a00;
+    color: rgba(2, 139, 255, 1);
     /* Color for hover state */
 }
 
@@ -65,8 +57,8 @@
 }
 
 .search-form .btn {
-    background-color: #ff6a00;
-    color: #fff;
+    background-color: #fff;
+    color: #ff6a00;
     border: none;
     margin-left: 0.5rem;
     padding: 0.5rem 1rem;
@@ -74,7 +66,7 @@
 }
 
 .search-form .btn:hover {
-    background-color: #ff6a00;
+    background-color: #fff;
     color: rgba(2, 139, 255, 1);
     /* Darker shade for hover state */
 }
