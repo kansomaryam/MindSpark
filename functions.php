@@ -64,111 +64,6 @@ function aquila_get_theme_instance() {
 aquila_get_theme_instance();
 
 
-//function 1
-function register_financial_statistics_block() {
-    if (function_exists('acf_register_block_type')) {
-        acf_register_block_type(array(
-            'name'              => 'financial-statistics',
-            'title'             => __('Financial Statistics'),
-            'description'       => __('A custom block to display financial metrics.'),
-            'render_template'   => 'template-parts/blocks/financial-statistics-block.php',
-            'category'          => 'layout',
-            'icon'              => 'chart-bar',
-            'keywords'          => array('finance', 'statistics', 'metrics'),
-            'enqueue_style'     => get_template_directory_uri() . '/assets/build/css/blocks.css', // Enqueue block-specific CSS
-        ));
-    }
-}
-add_action('acf/init', 'register_financial_statistics_block');
-
-// Enqueue the general stylesheet for blocks if needed across pages
-function enqueue_block_styles() {
-    wp_enqueue_style('blocks-styles', get_template_directory_uri() . '/assets/build/css/blocks.css');
-}
-add_action('wp_enqueue_scripts', 'enqueue_block_styles');
-
-
-
-//function 2
-
-add_action('acf/init', 'register_financial_stats_block');
-function register_financial_stats_block() {
-    if (function_exists('acf_register_block_type')) {
-        acf_register_block_type(array(
-            'name'              => 'financial-stats',
-            'title'             => __('Financial Stats'),
-            'description'       => __('A block to display financial statistics.'),
-            'render_template'   => 'template-parts/blocks/financial-stats-block.php',
-            'category'          => 'formatting',
-            'icon'              => 'chart-bar',
-            'keywords'          => array('financial', 'stats'),
-            'enqueue_style'     => get_template_directory_uri() . '/assets/css/blocks.css',
-        ));
-    }
-}
-function enqueue_chart_js() {
-    wp_enqueue_script('chart-js', 'https://cdn.jsdelivr.net/npm/chart.js', array(), null, true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_chart_js');
-
-
-function aquila_enqueue_scripts() {
-    wp_enqueue_script('chart-js', 'https://cdn.jsdelivr.net/npm/chart.js', [], null, true);
-}
-add_action('wp_enqueue_scripts', 'aquila_enqueue_scripts');
-
-
-function my_acf_blocks_init() {
-    if (function_exists('acf_register_block_type')) {
-        acf_register_block_type(array(
-            'name'              => 'full-banner',
-            'title'             => __('Full-Size Banner'),
-            'description'       => __('A custom banner block that spans the full width of the screen.'),
-            'render_template'   => 'template-parts/blocks/full-banner.php',
-            'category'          => 'formatting',
-            'icon'              => 'welcome-widgets-menus',
-            'keywords'          => array('banner', 'full-width', 'hero'),
-            'enqueue_style'     => get_template_directory_uri() . '/assets/css/blocks.css', // Update path as needed
-            'supports'          => array('align' => array('full')),
-            'align'             => 'full'
-        ));
-    }
-}
-add_action('acf/init', 'my_acf_blocks_init');
-
-
-/*footer*/
-function aquila_widgets_init() {
-    register_sidebar( array(
-        'name'          => __( 'Footer Widget Area 1', 'aquila' ),
-        'id'            => 'footer-1',
-        'before_widget' => '<div class="footer-widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="footer-title">',
-        'after_title'   => '</h2>',
-    ) );
-
-register_sidebar( array(
-    'name'          => __( 'Footer 1', 'aquila' ),
-    'id'            => 'footer-1',
-    'description'   => __( 'Add widgets here to appear in your footer.', 'aquila' ),
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
-    'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
-    'after_title'   => '</h2>',
-) );
-    // Register Footer 2 Widget Area
-    register_sidebar( array(
-        'name'          => __( 'Footer 2', 'aquila' ),
-        'id'            => 'footer-2', // Ensure this ID matches
-        'description'   => __( 'Widgets in this area will be shown in the footer.', 'aquila' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
-}
-add_action( 'widgets_init', 'aquila_widgets_init' );
 
 /*header*/
 function enqueue_header_styles() {
@@ -192,28 +87,132 @@ function aquila_theme_setup() {
 add_action( 'after_setup_theme', 'aquila_theme_setup' );
 
 
-/*home ban*/
 
 
+/*footer*/
+function aquila_widgets_init() {
+
+register_sidebar( array(
+    'name'          => __( 'Footer 1', 'aquila' ),
+    'id'            => 'footer-1',
+    'description'   => __( 'Add widgets here to appear in your footer.', 'aquila' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title">',
+    'after_title'   => '</h2>',
+) );
+    // Register Footer 2 Widget Area
+    register_sidebar( array(
+        'name'          => __( 'Footer 2', 'aquila' ),
+        'id'            => 'footer-2', // Ensure this ID matches
+        'description'   => __( 'Widgets in this area will be shown in the footer.', 'aquila' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'aquila_widgets_init' );
+
+function aquila_enqueue_footer_styles() {
+    // Register the footer CSS file
+    wp_enqueue_style( 'aquila-footer-css', get_template_directory_uri() . '/assets/build/css/footer.css', array(), '1.0.0', 'all' );
+}
+add_action( 'wp_enqueue_scripts', 'aquila_enqueue_footer_styles' );
+
+
+/****************/
+/*blocks*/
+/***************/
+/**************/
+
+/*financial statistics block*/
+function register_financial_statistics_block() {
+    if (function_exists('acf_register_block_type')) {
+        acf_register_block_type(array(
+            'name'              => 'financial-statistics',
+            'title'             => __('Financial Statistics'),
+            'description'       => __('A custom block to display financial metrics.'),
+            'render_template'   => 'template-parts/blocks/financial-statistics-block/financial-statistics-block.php',
+            'category'          => 'layout',
+            'icon'              => 'chart-bar',
+            'keywords'          => array('finance', 'statistics', 'metrics'),
+            'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/financial-statistics-block/financial-statistics-block.css', // Enqueue block-specific CSS
+        ));
+    }
+}
+add_action('acf/init', 'register_financial_statistics_block');
+
+/****************/
+
+
+/*financial stats block*/
+
+function register_financial_stats_block() {
+    if (function_exists('acf_register_block_type')) {
+        acf_register_block_type(array(
+            'name'              => 'financial-stats',
+            'title'             => __('Financial Stats'),
+            'description'       => __('A block to display financial statistics.'),
+            'render_template'   => 'template-parts/blocks/financial-stats-block/financial-stats-block.php',
+            'category'          => 'formatting',
+            'icon'              => 'chart-bar',
+            'keywords'          => array('financial', 'stats'),
+            'enqueue_style'     => get_template_directory_uri() . 'template-parts/blocks/financial-stats-block/financial-stats-block.css',
+        ));
+    }
+}
+add_action('acf/init', 'register_financial_stats_block');
+function enqueue_chart_js() {
+    wp_enqueue_script('chart-js', 'https://cdn.jsdelivr.net/npm/chart.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_chart_js');
+
+
+function aquila_enqueue_scripts() {
+    wp_enqueue_script('chart-js', 'https://cdn.jsdelivr.net/npm/chart.js', [], null, true);
+}
+add_action('wp_enqueue_scripts', 'aquila_enqueue_scripts');
+
+/***************/
+
+/*full banner */
+function my_acf_blocks_init() {
+    if (function_exists('acf_register_block_type')) {
+        acf_register_block_type(array(
+            'name'              => 'full-banner',
+            'title'             => __('Full-Size Banner'),
+            'description'       => __('A custom banner block that spans the full width of the screen.'),
+            'render_template'   => 'template-parts/blocks/full-banner/full-banner.php',
+            'category'          => 'formatting',
+            'icon'              => 'welcome-widgets-menus',
+            'keywords'          => array('banner', 'full-width', 'hero'),
+            'enqueue_style'     => get_template_directory_uri() . 'template-parts/blocks/full-banner/full-banner.css',
+            'supports'          => array('align' => array('full')),
+            'align'             => 'full'
+        ));
+    }
+}
+add_action('acf/init', 'my_acf_blocks_init');
+
+/*banner block*/
 function register_acf_banner_block() {
     if( function_exists('acf_register_block_type') ) {
         acf_register_block_type(array(
             'name'              => 'banner-block',
             'title'             => __('Banner Block'),
             'description'       => __('A custom banner block for promotions.'),
-            'render_template'   => 'template-parts/blocks/banner-block.php',
+            'render_template'   => 'template-parts/blocks/full-banner/full-banner.php',
             'category'          => 'formatting',
             'icon'              => 'megaphone',
             'keywords'          => array( 'banner', 'hero', 'acf' ),
+            'enqueue_style'     => get_template_directory_uri() . 'template-parts/blocks/banner-block/banner-block.css',
         ));
     }
 }
 add_action('acf/init', 'register_acf_banner_block');
 
-function enqueue_banner_block_styles() {
-    wp_enqueue_style('banner-block-style', get_template_directory_uri() . '/assets/build/css/blocks.css');
-}
-add_action('wp_enqueue_scripts', 'enqueue_banner_block_styles');
+/***************/
 
 
 /*media block*/
@@ -223,15 +222,14 @@ if (function_exists('acf_register_block_type')) {
         'name'              => 'media-block',
         'title'             => __('Media Block'),
         'description'       => __('A block for displaying media with title and text.'),
-        'render_template'   => 'template-parts/blocks/media-block.php',
+        'render_template'   => 'template-parts/blocks/media-block/media-block.php',
         'category'          => 'formatting',
         'icon'              => 'format-image',
         'keywords'          => array('media', 'image', 'text'),
-        'enqueue_assets'    => function() {
-            wp_enqueue_style('tailwindcss', get_template_directory_uri() . '/path-to-your-tailwind-css-file.css');
-        },
+        'enqueue_style'     => get_template_directory_uri() . 'template-parts/blocks/media-block/media-block.css',
     ));
 }
+/******************/
 
 /*hero block*/
 function register_hero_block() {
@@ -241,14 +239,14 @@ function register_hero_block() {
             'name'              => 'hero-block',
             'title'             => __('Hero Block'),
             'description'       => __('A custom hero block with header, content, and background image.'),
-            'render_template'   => 'template-parts/blocks/hero-block.php', // Path to template
+            'render_template'   => 'template-parts/blocks/hero-block/hero-block.php', 
             'category'          => 'formatting',
             'icon'              => 'cover-image', // Choose an icon from Dashicons
             'keywords'          => array('hero', 'banner', 'image'),
-            'enqueue_style'     => get_template_directory_uri() . '/assets/build/css/blocks.css', // Adjust path to your CSS file
+            'enqueue_style'     => get_template_directory_uri() . 'template-parts/blocks/hero-block/hero-block.css',
             'supports'          => array(
-                'align' => true,  // Set to true if you want alignment options
-                'mode'  => true,  // Set to true if you want edit mode options
+                'align' => true,  
+                'mode'  => true,  
                 'jsx'   => true,
             ),
         ));
@@ -256,17 +254,13 @@ function register_hero_block() {
 }
 add_action('acf/init', 'register_hero_block');
 
+/**********************/
 
 
 
 
 
 
-function aquila_enqueue_footer_styles() {
-    // Register the footer CSS file
-    wp_enqueue_style( 'aquila-footer-css', get_template_directory_uri() . '/assets/build/css/footer.css', array(), '1.0.0', 'all' );
-}
-add_action( 'wp_enqueue_scripts', 'aquila_enqueue_footer_styles' );
 
 /*search*/
 
@@ -281,4 +275,30 @@ function theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
+/* Enqueue Block Styles */
+function enqueue_block_assets() {
+    // Financial Statistics Block Styles
+    wp_enqueue_style( 
+        'financial-statistics-css', 
+        get_template_directory_uri() . '/template-parts/blocks/financial-statistics-block/financial-statistics-block.css',
+        array(), 
+        filemtime( get_template_directory() . '/template-parts/blocks/financial-statistics-block/financial-statistics-block.css' )
+    );
 
+    // Full Banner Block Styles
+    wp_enqueue_style( 
+        'full-banner-css', 
+        get_template_directory_uri() . '/template-parts/blocks/full-banner/full-banner.css',
+        array(), 
+        filemtime( get_template_directory() . '/template-parts/blocks/full-banner/full-banner.css' )
+    );
+
+    // Media Block Styles
+    wp_enqueue_style( 
+        'media-block-css', 
+        get_template_directory_uri() . '/template-parts/blocks/media-block/media-block.css',
+        array(), 
+        filemtime( get_template_directory() . '/template-parts/blocks/media-block/media-block.css' )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_block_assets' );

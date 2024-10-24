@@ -1,18 +1,16 @@
 <?php
 /**
  * Clock Widget
- *
+ * The Clock_Widget class creates a customizable clock widget for the WordPress sidebar with a title option.
  * @package Aquila
  */
 
 namespace AQUILA_THEME\Inc;
 
 use WP_Widget;
-
 use AQUILA_THEME\Inc\Traits\Singleton;
 
 class Clock_Widget extends WP_Widget {
-
 	use Singleton;
 
 	/**
@@ -22,7 +20,7 @@ class Clock_Widget extends WP_Widget {
 		parent::__construct(
 			'clock_widget', // Base ID
 			'Clock', // Name
-			[ 'description' => __( 'Clock Widget', 'aquila' ), ] // Args
+			[ 'description' => __( 'Clock Widget', 'aquila' ) ] // Args
 		);
 	}
 
@@ -33,7 +31,6 @@ class Clock_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 *
 	 * @see WP_Widget::widget()
-	 *
 	 */
 	public function widget( $args, $instance ) {
 		extract( $args );
@@ -63,17 +60,12 @@ class Clock_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 *
 	 * @see WP_Widget::form()
-	 *
 	 */
 	public function form( $instance ) {
-		if ( isset( $instance['title'] ) ) {
-			$title = $instance['title'];
-		} else {
-			$title = __( 'New title', 'aquila' );
-		}
+		$title = isset( $instance['title'] ) ? $instance['title'] : __( 'New title', 'aquila' );
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:', 'aquila' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'aquila' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
 			       name="<?php echo $this->get_field_name( 'title' ); ?>" type="text"
 			       value="<?php echo esc_attr( $title ); ?>"/>
@@ -89,13 +81,11 @@ class Clock_Widget extends WP_Widget {
 	 *
 	 * @return array Updated safe values to be saved.
 	 * @see WP_Widget::update()
-	 *
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance          = [];
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['title'] = ! empty( $new_instance['title'] ) ? strip_tags( $new_instance['title'] ) : '';
 
 		return $instance;
 	}
-
 }

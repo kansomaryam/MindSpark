@@ -1,0 +1,98 @@
+/* Financial Statistics Block Styles */
+
+.financial-statistics-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.financial-statistics-block {
+    padding: 20px;
+    background-color: #ffffffe7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 800px;
+    max-width: 90%;
+    /* Adds responsiveness on smaller screens */
+    text-align: center;
+    margin: auto;
+}
+
+.financial-statistics-block .title {
+    font-size: 24px;
+    color: #0b75c6;
+    margin-bottom: 20px;
+}
+
+
+/* Financial Metrics Container */
+
+.financial-metrics {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+/* Metric Box Styles */
+
+.metric {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+}
+
+
+/* Hover Effect for Metric Boxes */
+
+.metric:hover {
+    background-color: #f0f0f0;
+    /* Slightly darker background on hover */
+    transform: translateY(-2px);
+    /* Lift effect */
+}
+
+
+/* Metric Title and Value Styles */
+
+.metric h3 {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+.metric p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+
+/* Financial Description */
+
+.financial-description {
+    font-size: 16px;
+    color: #555;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+
+/* Responsive Styles */
+
+@media (max-width: 600px) {
+    .financial-metrics {
+        flex-direction: column;
+        /* Stack vertically on small screens */
+        align-items: center;
+        /* Center items */
+    }
+}

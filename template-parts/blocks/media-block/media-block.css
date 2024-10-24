@@ -1,0 +1,70 @@
+/* Media Block Styles */
+
+.media-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    /* Light gray background */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    height: 600px;
+}
+
+.media-image {
+    width: 100%;
+    /* Full width */
+    max-width: 500px;
+    /* Optional max width */
+}
+
+.media-image img {
+    width: 100%;
+    /* Responsive image */
+    border-radius: 8px;
+    /* Rounded corners for image */
+}
+
+.media-content {
+    text-align: center;
+    /* Center text */
+    padding: 20px;
+    /* Padding around content */
+}
+
+.media-title {
+    font-size: 24px;
+    /* Title font size */
+    font-weight: bold;
+    /* Bold title */
+    margin-bottom: 10px;
+    /* Space below title */
+}
+
+.media-text {
+    margin-bottom: 15px;
+    /* Space below text */
+}
+
+.media-button {
+    background-color: rgba(2, 139, 255, 1);
+    /* Coral color */
+    color: white;
+    /* White text */
+    padding: 10px 20px;
+    /* Vertical and horizontal padding */
+    text-decoration: none;
+    /* No underline */
+    border-radius: 5px;
+    /* Rounded button */
+    transition: background-color 0.3s;
+    /* Smooth background transition */
+}
+
+.media-button:hover {
+    background-color: rgba(2, 139, 255, 1);
+    /* Darker coral on hover */
+}

@@ -1,0 +1,77 @@
+/* Financial Stats Block Styles */
+
+.financial-statistics-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.financial-overview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center-aligns content horizontally */
+    justify-content: center;
+    max-width: 800px;
+    /* Adjust as needed */
+    margin: 0 auto;
+    /* Centers the container on the page */
+    padding: 20px;
+    text-align: center;
+}
+
+.financial-overview-container .title {
+    font-size: 24px;
+    color: #285ba7;
+    margin-bottom: 20px;
+}
+
+.financial-metric {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Semi-transparent background */
+    color: #ffffff;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.financial-statistics-block {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-size: cover;
+    /* Ensures the image covers the block */
+    background-position: center;
+    /* Centers the image */
+    color: white;
+    /* Adjust text color for visibility */
+}
+
+.statistic {
+    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    /* Optional: Adds a semi-transparent background */
+    padding: 10px;
+    /* Adds some padding */
+    border-radius: 5px;
+    /* Rounds the corners */
+}
+
+.metric-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.metric-value {
+    font-size: 32px;
+    color: #0073aa;
+}
+
+.chart {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+}

@@ -1,7 +1,7 @@
 <?php
 /**
  * Block Patterns
- *
+ * The Block_Patterns class registers custom block patterns and their categories for the Aquila theme.
  * @package Aquila
  */
 

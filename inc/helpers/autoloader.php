@@ -1,6 +1,6 @@
 <?php
 /**
- * Autoloader file for theme.
+ * Autoloader function for dynamically loading theme classes and traits in the Aquila theme.
  *
  * @package Aquila
  */
@@ -8,75 +8,69 @@
 namespace AQUILA_THEME\Inc\Helpers;
 
 /**
- * Auto loader function.
  *
- * @param string $resource Source namespace.
+ * @param string $resource The resource namespace to autoload.
  *
  * @return void
  */
 function autoloader( $resource = '' ) {
-	$resource_path  = false;
-	$namespace_root = 'AQUILA_THEME\\';
-	$resource       = trim( $resource, '\\' );
+    $resource_path  = false;
+    $namespace_root = 'AQUILA_THEME\\';
+    $resource       = trim( $resource, '\\' );
 
-	if ( empty( $resource ) || strpos( $resource, '\\' ) === false || strpos( $resource, $namespace_root ) !== 0 ) {
-		// Not our namespace, bail out.
-		return;
-	}
+    // Bail if the resource is not within the Aquila namespace.
+    if ( empty( $resource ) || strpos( $resource, '\\' ) === false || strpos( $resource, $namespace_root ) !== 0 ) {
+        return;
+    }
 
+    // Remove the namespace root and prepare the path.
+    $resource = str_replace( $namespace_root, '', $resource );
+    $path = explode(
+        '\\',
+        str_replace( '_', '-', strtolower( $resource ) )
+    );
 
-	$resource = str_replace( $namespace_root, '', $resource );
+    // Check if the path contains valid elements.
+    if ( empty( $path[0] ) || empty( $path[1] ) ) {
+        return;
+    }
 
-	$path = explode(
-		'\\',
-		str_replace( '_', '-', strtolower( $resource ) )
-	);
+    // Initialize directory and filename variables.
+    $directory = '';
+    $file_name = '';
 
-	/**
-	 * Time to determine which type of resource path it is,
-	 * so that we can deduce the correct file path for it.
-	 */
-	if ( empty( $path[0] ) || empty( $path[1] ) ) {
-		return;
-	}
+    // Determine the type of resource and set the directory and file name.
+    if ( 'inc' === $path[0] ) {
+        switch ( $path[1] ) {
+            case 'traits':
+                $directory = 'traits';
+                $file_name = sprintf( 'trait-%s', trim( strtolower( $path[2] ) ) );
+                break;
 
-	$directory = '';
-	$file_name = '';
+            case 'widgets':
+            case 'blocks':
+                if ( ! empty( $path[2] ) ) {
+                    $directory = sprintf( 'classes/%s', $path[1] );
+                    $file_name = sprintf( 'class-%s', trim( strtolower( $path[2] ) ) );
+                }
+                break;
 
-	if ( 'inc' === $path[0] ) {
+            default:
+                $directory = 'classes';
+                $file_name = sprintf( 'class-%s', trim( strtolower( $path[1] ) ) );
+                break;
+        }
 
-		switch ( $path[1] ) {
-			case 'traits':
-				$directory = 'traits';
-				$file_name = sprintf( 'trait-%s', trim( strtolower( $path[2] ) ) );
-				break;
+        // Create the full resource path.
+        $resource_path = sprintf( '%s/inc/%s/%s.php', untrailingslashit( AQUILA_DIR_PATH ), $directory, $file_name );
+    }
 
-			case 'widgets':
-			case 'blocks': 
-				if ( ! empty( $path[2] ) ) {
-					$directory = sprintf( 'classes/%s', $path[1] );
-					$file_name = sprintf( 'class-%s', trim( strtolower( $path[2] ) ) );
-					break;
-				}
-			default:
-				$directory = 'classes';
-				$file_name = sprintf( 'class-%s', trim( strtolower( $path[1] ) ) );
-				break;
-		}
-
-		$resource_path = sprintf( '%s/inc/%s/%s.php', untrailingslashit( AQUILA_DIR_PATH ), $directory, $file_name );
-
-	}
-
-	/**
-	 * If $is_valid_file has 0 means valid path or 2 means the file path contains a Windows drive path.
-	 */
-	$is_valid_file = validate_file( $resource_path );
-
-	if ( ! empty( $resource_path ) && file_exists( $resource_path ) && ( 0 === $is_valid_file || 2 === $is_valid_file ) ) {
-		require_once( $resource_path ); 
-	}
-
+    // Check if the file exists and is valid, then require it.
+    $is_valid_file = validate_file( $resource_path );
+    if ( ! empty( $resource_path ) && file_exists( $resource_path ) && ( 0 === $is_valid_file || 2 === $is_valid_file ) ) {
+        require_once( $resource_path );
+    }
 }
 
+// Register the autoloader function.
 spl_autoload_register( '\AQUILA_THEME\Inc\Helpers\autoloader' );
