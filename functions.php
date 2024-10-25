@@ -56,6 +56,8 @@ if ( ! defined( 'AQUILA_SEARCH_RESULTS_POST_PER_PAGE' ) ) {
 
 require_once AQUILA_DIR_PATH . '/inc/helpers/autoloader.php';
 require_once AQUILA_DIR_PATH . '/inc/helpers/template-tags.php';
+require_once get_template_directory() . '/inc/classes/class-blocks.php';
+
 
 function aquila_get_theme_instance() {
 	\AQUILA_THEME\Inc\AQUILA_THEME::get_instance();
